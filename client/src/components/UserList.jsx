@@ -75,7 +75,7 @@ const UserList = ({ setSelectedUsers }) => {
     };
 
     // call the function to get the users
-    if (client) getUsers();
+    if (client) getUsers()
   }, []);
 
   if (error) {
