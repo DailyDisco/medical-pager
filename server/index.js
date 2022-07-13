@@ -16,7 +16,7 @@ const twilioClient = require('twilio')(accountSid, authToken);
 
 app.use(cors()); // this is used for cross origin requests
 app.use(express.json()); // this is used for parsing json between front and back end
-// gitapp.use(express.urlencoded({ extended: false })); // this is used for parsing urlencoded data between front and back end
+app.use(express.urlencoded({ extended: false })); // this is used for parsing urlencoded data between front and back end
 
 app.get('/', (req, res) => {
   res.send('Hello, World!');
