@@ -27,26 +27,26 @@ const ChannelSearch = ({ setToggleContainer }) => {
       const channelResponse = client.queryChannels({
         type: "team",
         name: { $autocomplete: text },
-        members: { $in: [client.userID] },
+        members: { $in: [client.userID]}
       });
       // query the users
       const userResponse = client.queryUsers({
         // don't include the current user
         id: { $ne: client.userID },
         // include the user if they have the same name as the query
-        name: { $autocomplete: text },
+        name: { $autocomplete: text }
       });
 
       // starts both requests at the same time making it quicker
       const [channels, { users }] = await Promise.all([
         channelResponse,
-        userResponse,
+        userResponse
       ]);
 
       if (channels.length) setTeamChannels(channels);
       if (users.length) setDirectChannels(users);
     } catch (error) {
-      setQuery("");
+      setQuery('');
     }
   };
 
@@ -64,7 +64,7 @@ const ChannelSearch = ({ setToggleContainer }) => {
   };
 
   const setChannel = (channel) => {
-    setQuery("");
+    setQuery('');
     setActiveChannel(channel);
   };
 

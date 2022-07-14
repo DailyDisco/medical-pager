@@ -4,7 +4,7 @@ const cors = require('cors');
 const authRoutes = require("./routes/auth.js");
 
 const app = express();
-const PORT = process.env.PORT || 5001;
+const PORT = process.env.PORT || 5000;
 
 require('dotenv').config();
 // this allows us to call our environmnt variables in our node app
@@ -16,7 +16,7 @@ const twilioClient = require('twilio')(accountSid, authToken);
 
 app.use(cors()); // this is used for cross origin requests
 app.use(express.json()); // this is used for parsing json between front and back end
-// app.use(express.urlencoded()); // this is used for parsing urlencoded data between front and back end
+// app.use(express.urlencoded({ extended: false})); // this is used for parsing urlencoded data between front and back end
 
 app.get('/', (req, res) => {
   res.send('Hello, World!');
