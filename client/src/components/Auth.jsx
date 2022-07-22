@@ -30,7 +30,7 @@ const Auth = () => {
 
     const { username, password, phoneNumber, avatarURL } = form;
 
-    const URL = 'https://modern-medical-pager.herokuapp.com';
+    const URL = 'https://modern-medical-pager.herokuapp.com/auth';
     // this is the url of the backend server
 
     const {
