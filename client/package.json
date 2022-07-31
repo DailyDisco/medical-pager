@@ -6,19 +6,19 @@
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
-    "axios": "^0.21.4",
-    "html-to-react": "^1.5.0",
+    "axios": "^0.21.1",
+    "core-util-is": "^1.0.3",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-scripts": "^5.0.1",
-    "stream-chat": "^4.4.3",
-    "stream-chat-react": "^9.1.4",
+    "react-scripts": "5.0.1",
+    "stream-chat": "^4.1.0",
+    "stream-chat-react": "^6.5.1",
     "universal-cookie": "^4.0.4",
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "react-scripts --max_old_space_size=8112 start",
+    "build": "react-scripts --max_old_space_size=8112 build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -35,8 +35,8 @@
       "not op_mini all"
     ],
     "development": [
-      "last 1 chrome version",
       "last 1 firefox version",
+      "last 1 chrome version",
       "last 1 safari version"
     ]
   }

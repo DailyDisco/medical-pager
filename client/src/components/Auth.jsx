@@ -14,7 +14,8 @@ const initialState = {
   confirmPassword: '',
   phoneNumber: '',
   avatarURL: '',
-};
+}
+
 
 // this will give us our Auth token which changes the state of the component
 const Auth = () => {
@@ -24,7 +25,7 @@ const Auth = () => {
   // e stands for event
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
-  };
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault(); // this stops teh page from refreshing
@@ -32,16 +33,10 @@ const Auth = () => {
     const { username, password, phoneNumber, avatarURL } = form;
 
     const URL = 'https://modern-medical-pager.herokuapp.com/auth';
-    // this is the url of the backend server
+    // this is the url of the backend server https://modern-medical-pager.herokuapp.com/auth
 
-    const {
-      data: { token, userId, hashedPassword, fullName },
-    } = await axios.post(`${URL}/${isSignup ? 'signup' : 'login'}`, {
-      username,
-      password,
-      fullName: form.fullName,
-      phoneNumber,
-      avatarURL,
+    const { data: { token, userId, hashedPassword, fullName } } = await axios.post(`${URL}/${isSignup ? 'signup' : 'login'}`, {
+      username, password, fullName: form.fullName, phoneNumber, avatarURL,
     });
 
     cookies.set('token', token);
@@ -53,30 +48,30 @@ const Auth = () => {
     // we are storing everything in the cookies
     if (isSignup) {
       cookies.set('phoneNumber', phoneNumber);
-      cookies.set('avatarURl', avatarURL);
+      cookies.set('avatarURL', avatarURL);
       cookies.set('hashedPassword', hashedPassword);
     }
 
     window.location.reload();
     // this reloads the page
-  };
+  }
   const switchMode = () => {
     setIsSignup((prevIsSignup) => !prevIsSignup);
-  }; // this changes the state based on the previous state
+  } // this changes the state based on the previous state
 
   return (
-    <div className='auth__form-container'>
-      <div className='auth__form-container_fields'>
-        <div className='auth__form-container_fields-content'>
+    <div className="auth__form-container">
+      <div className="auth__form-container_fields">
+        <div className="auth__form-container_fields-content">
           <p>{isSignup ? 'Sign Up' : 'Sign In'}</p>
           <form onSubmit={handleSubmit}>
             {isSignup && (
               <div className='auth__form-container_fields-content_input'>
                 <label htmlFor='fullName'>Full Name</label>
                 <input
-                  name='fullName'
-                  type='text'
-                  placeholder='Full Name'
+                  name="fullName"
+                  type="text"
+                  placeholder="Full Name"
                   onChange={handleChange}
                   required
                 />
@@ -144,9 +139,12 @@ const Auth = () => {
           </form>
           <div className='auth__form-container_fields-account'>
             <p>
-              {isSignup ? 'Already have an account? ' : "Don't have an account? "}
+              {isSignup 
+              ? 'Already have an account? ' 
+              : "Don't have an account? "
+              }
               <span onClick={switchMode}>
-                {isSignup ? 'Sign In' : 'Sign Up'}
+              {isSignup ? 'Sign In' : 'Sign Up'}
               </span>
             </p>
           </div>
@@ -156,7 +154,7 @@ const Auth = () => {
         <img src={signinImage} alt='sign in' />
       </div>
     </div>
-  );
+  )
 };
 
 export default Auth

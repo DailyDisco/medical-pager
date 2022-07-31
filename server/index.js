@@ -17,9 +17,20 @@ const twilioClient = require('twilio')(accountSid, authToken);
 app.use(cors()); // this is used for cross origin requests
 
 app.use(express.json()); // this is used for parsing json between front and back end
-app.use(express.urlencoded({/* extended: false*/})); // this is used for parsing urlencoded data between front and back end
+app.use(express.urlencoded({ extended: false })); // this is used for parsing urlencoded data between front and back end
+
+/*
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "X-Requested-With");
+  next();
+  });
+
+*/
 
 app.get('/', (req, res) => {
+  res.header('Access-Control-Allow-Origin', 'https://modern-medical-pager.herokuapp.com/auth'); // If you want everyone to be able to access your api. set it to '*'
+  res.status(200).send('hi');
   res.send('Hello, World!');
 });
 
