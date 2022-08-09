@@ -15,7 +15,7 @@ import './App.css';
 
 const cookies = new Cookies();
 
-const apiKey = 'qgtk9ttyha7j';
+const apiKey = 'u7j9dfjz8n6y';
 // this key is used to connect StreamChat
 
 const authToken = cookies.get('token');
