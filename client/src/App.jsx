@@ -67,5 +67,5 @@ const App = () => {
 
 export default App;
 
-// we are going to use the bum css methology to style our app
+// we are going to use the bum css methodology to style our app
 // b stands for block, u stands for underscores, and m stands for modifiers
